@@ -1,0 +1,9 @@
+name = "cardrush-pages"
+compatibility_date = "2024-06-20"
+
+[vars]
+
+[d1_databases]
+DB = { binding = "DB", database_name = "cardrush-db", database_id = "REPLACE_ME_ON_CLOUDFLARE" }
+
+
