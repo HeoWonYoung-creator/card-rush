@@ -19,6 +19,10 @@
       --bg:#ffffff;--panel:#ffffff;--panel2:#f7f7f8;--text:#111111;--muted:#6b7280;--accent:#111111;--good:#16a34a;--bad:#dc2626;--warn:#111111;
       --card-w:96px;--card-h:120px;--grid-gap:12px
     }
+    /* Dark theme tokens */
+    body.theme-dark{
+      --bg:#0b0f1a;--panel:#0e1424;--panel2:#0e1424;--text:#e8ecf6;--muted:#9aa4bf;--accent:#e8ecf6;--good:#22c55e;--bad:#ef4444;--warn:#e8ecf6;
+    }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{margin:0;background:var(--bg);color:var(--text);font-family:"Pretendard Variable","Pretendard",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;display:flex;flex-direction:column;min-height:100vh}
@@ -33,35 +37,46 @@
     .title-brand .brand-h{color:#0f172a}
 
     .board{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:16px;box-shadow:0 8px 24px rgba(0,0,0,.06);width:100%;max-width:720px}
+    .theme-dark .board{background:#0e1424;border-color:#1f2a44;box-shadow:0 8px 24px rgba(0,0,0,.45)}
     .board h2{font-size:14px;margin:0 0 10px;color:#1f2a44;font-weight:800}
 
     .status{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
     .chip{background:var(--panel);border:1px solid #e4e9f6;border-radius:12px;padding:10px 12px;text-align:center}
+    .theme-dark .chip{background:#0e1424;border-color:#1e293b}
     .chip .label{display:block;font-size:11px;color:var(--muted)}
     .chip .value{display:block;font-size:18px;font-weight:900;margin-top:2px}
 
-    .target{display:flex;flex-direction:column;align-items:center;gap:8px;background:#fafafa;border:1px solid #e5e7eb;border-radius:14px;padding:18px;text-align:center}
+    .target{display:flex;flex-direction:column;align-items:center;gap:8px;background:#f6f7fb;border:1px solid #e5e7eb;border-radius:14px;padding:18px;text-align:center}
+    .theme-dark .target{background:#0d1526;border-color:#1e293b}
     .tg-num{min-width:96px;height:96px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:#ffffff;border:1px solid #e5e7eb;font-size:56px;font-weight:900;color:#111;padding:8px 16px}
+    .theme-dark .tg-num{background:#0b0f1a;border-color:#1e293b;color:#e8ecf6}
     .tg-meta{width:100%}
     .tg-title{margin:0 0 4px;font-weight:900;font-size:16px;color:#2b3a66}
     .tg-desc{margin:2px 0 0;color:#5f6e91;font-size:13px}
-    .game-desc{background:#fff;border:none;color:#444;border-radius:12px;padding:10px 12px;margin-bottom:12px;font-weight:600;text-align:center}
+    .game-desc{background:var(--panel2);border:none;color:#333;border-radius:12px;padding:10px 12px;margin-bottom:12px;font-weight:700;text-align:center}
+    .theme-dark .game-desc{color:#e6ebf7}
 
     .hand{display:grid;grid-template-columns:repeat(5, var(--card-w));gap:var(--grid-gap);justify-content:center;margin-top:12px;min-height:calc(var(--card-h)*2 + var(--grid-gap));grid-auto-rows:var(--card-h);align-items:start;align-content:center}
-    .card{position:relative;display:flex;align-items:center;justify-content:center;width:var(--card-w);height:var(--card-h);border-radius:14px;background:#fff;border:1px solid #e5e7eb;color:#111;font-size:32px;font-weight:900;cursor:pointer;transition:transform .12s ease,box-shadow .12s ease,opacity .12s;will-change:transform;backface-visibility:hidden;transform-style:preserve-3d}
+    .card{position:relative;display:flex;align-items:center;justify-content:center;width:var(--card-w);height:var(--card-h);border-radius:14px;background:#fff;border:1px solid #e5e7eb;color:#111;font-size:32px;font-weight:900;cursor:pointer;transition:transform .12s ease,box-shadow .12s ease,opacity .12s;will-change:transform;backface-visibility:hidden;transform-style:preserve-3d;filter:brightness(1.02)}
+    .theme-dark .card{background:#10172a;border-color:#1f2a44;color:#f8fafc;filter:brightness(1.1)}
     .card:hover{transform:translateY(-2px);box-shadow:0 8px 16px rgba(0,0,0,.06)}
+    .theme-dark .card:hover{box-shadow:0 8px 16px rgba(0,0,0,.35)}
     .card.disabled{opacity:.55;pointer-events:none}
     .card .small{position:absolute;bottom:8px;right:10px;font-size:11px;color:#6c7aa0}
     .card.red{color:#c02626}
+    .theme-dark .card.red{color:#f87171}
     .card .corner{position:absolute;display:flex;flex-direction:column;align-items:center;line-height:1}
     .card .corner .rank{font-size:18px}
-    .card .corner .suit{font-size:14px}
+    .card .corner .suit{display:none}
     .card .corner.tl{top:8px;left:10px}
     .card .corner.br{bottom:8px;right:10px;transform:rotate(180deg)}
-    .card .suit-large{font-size:42px;opacity:.18}
+    .card .suit-large{display:none}
+    .theme-dark .card .suit-large{opacity:.18}
     .card.placeholder{background:linear-gradient(180deg,#fbfdff,#f7faff);border-style:dashed;color:#a3aed0}
+    .theme-dark .card.placeholder{background:linear-gradient(180deg,#10192b,#0b1220);color:#64748b;border-color:#243045}
     .spacer{width:var(--card-w);height:var(--card-h);display:block}
     .card.concealed{background:linear-gradient(180deg,#f7f9ff,#f3f6ff);border-color:#e3e9f8;color:#7b89a9}
+    .theme-dark .card.concealed{background:linear-gradient(180deg,#10192b,#0b1220);border-color:#243045;color:#9aa4bf}
     .question-large{font-size:42px;opacity:.5}
     .card.flip{animation:flipIn .38s ease both}
 
@@ -75,6 +90,11 @@
       60%{transform:rotateY(12deg) scale(1);opacity:1}
       100%{transform:rotateY(0)}
     }
+
+    /* Pips (suit icons arranged like real cards) */
+    .pips{position:absolute;inset:0;pointer-events:none}
+    .pip{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:18px;line-height:1;opacity:.5}
+    .theme-dark .pip{filter:none;opacity:.5}
 
     /* Floating +1s text */
     .penalty-float{position:fixed;left:0;top:0;transform:translate(-50%,-50%);font-weight:900;color:#dc2626;font-size:18px;pointer-events:none;z-index:60;opacity:0;}
@@ -96,6 +116,8 @@
     .controls.between .btn{background:linear-gradient(180deg,#fbfbfb,#f6f6f6);border-color:#ececec;color:#111}
     .controls.between #startBtn{background:linear-gradient(180deg,#e8e8e8,#dfdfdf);border-color:#cfd3d8;color:#111;min-width:160px}
     .controls.between #rankBtn{min-width:160px}
+    .theme-dark .controls.between .btn{background:linear-gradient(180deg,#293448,#1b2435);border-color:#35435a;color:#e5e7eb}
+    .theme-dark .controls.between #startBtn{background:linear-gradient(180deg,#3b4a62,#2a364b);border-color:#475569;color:#fff}
     .btn .lead-icon{margin-right:8px;}
     .btn:disabled{opacity:.55;cursor:not-allowed}
     .controls.secondary{justify-content:center;margin-top:14px}
@@ -108,6 +130,8 @@
     /* Emphasize selected difficulty by washing out unselected buttons */
     #difficulty .btn{background:linear-gradient(180deg,#fbfbfb,#f6f6f6);border-color:#ececec;color:#9ca3af}
     #difficulty .btn.primary{background:linear-gradient(180deg,#e8e8e8,#dfdfdf);border-color:#cfd3d8;color:#111}
+    .theme-dark #difficulty .btn{background:linear-gradient(180deg,#202a3f,#151e30);border-color:#2a3850;color:#8b95a7}
+    .theme-dark #difficulty .btn.primary{background:linear-gradient(180deg,#374151,#1f2937);border-color:#4b5563;color:#fff}
     
     /* Rankings modal */
     .rank-list{margin:8px 0 0;padding:0;list-style:none;max-height:300px;overflow:auto;border-top:1px solid #eee}
@@ -179,6 +203,9 @@
         <button class="btn primary" id="startBtn"><span class="lead-icon" aria-hidden="true">⚔️</span>게임 시작</button>
         <button class="btn" id="resetBtn"><span class="lead-icon" aria-hidden="true">🔄</span>새로고침</button>
         <button class="btn" id="rankBtn"><span class="lead-icon" aria-hidden="true">🏆</span>랭킹 보기</button>
+      </div>
+      <div class="controls" style="margin-top:6px">
+        <button class="btn" id="themeBtn" style="background:linear-gradient(180deg,#fbfbfb,#f6f6f6);border-color:#ececec;color:#111"><span class="lead-icon" aria-hidden="true">🌙</span><span id="themeText">다크모드</span></button>
       </div>
       
 
@@ -266,6 +293,11 @@
   };
 
   function init(){
+    // 초기 테마 적용
+    try{
+      const saved = localStorage.getItem('cardrush_theme') || 'light';
+      setTheme(saved);
+    }catch(_){ setTheme('light'); }
     updateBestHUDFromStorage();
     wire();
     setupAudio();
@@ -300,6 +332,35 @@
         }
       });
     });
+
+    // theme toggle
+    const themeBtn = document.getElementById('themeBtn');
+    themeBtn.addEventListener('click', ()=>{
+      const next = document.body.classList.contains('theme-dark') ? 'light' : 'dark';
+      setTheme(next);
+      try{ localStorage.setItem('cardrush_theme', next); }catch(_){ }
+    });
+  }
+
+  function setTheme(mode){
+    const isDark = mode === 'dark';
+    document.body.classList.toggle('theme-dark', isDark);
+    const icon = document.querySelector('#themeBtn .lead-icon');
+    const txt = document.getElementById('themeText');
+    const btn = document.getElementById('themeBtn');
+    if(icon) icon.textContent = isDark ? '☀️' : '🌙';
+    if(txt) txt.textContent = isDark ? '라이트모드' : '다크모드';
+    if(btn){
+      if(isDark){
+        btn.style.background = 'linear-gradient(180deg,#293448,#1b2435)';
+        btn.style.borderColor = '#35435a';
+        btn.style.color = '#e5e7eb';
+      } else {
+        btn.style.background = 'linear-gradient(180deg,#fbfbfb,#f6f6f6)';
+        btn.style.borderColor = '#ececec';
+        btn.style.color = '#111';
+      }
+    }
   }
 
   function reset(){
@@ -454,9 +515,9 @@
           btn.dataset.suit = card.suit;
           btn.dataset.idx = String(handIdx);
           btn.innerHTML = `
-            <div class="corner tl"><span class="rank">${card.rank}</span><span class="suit">${card.suit}</span></div>
-            <div class="suit-large">${card.suit}</div>
-            <div class="corner br"><span class="rank">${card.rank}</span><span class="suit">${card.suit}</span></div>
+            <div class="corner tl"><span class="rank">${card.rank}</span></div>
+            <div class="corner br"><span class="rank">${card.rank}</span></div>
+            ${pipsHTML(card.rank, card.suit)}
           `;
         }
       } else {
@@ -641,6 +702,27 @@
     }
     // 안전장치: 더 이상 시도하지 않고 일반 드로우
     return draw();
+  }
+
+  // Pips helper
+  function pipsHTML(rank, suit){
+    const size = 16; // base font-size for pips
+    const pip = (xPct, yPct, rot=0) => `<span class="pip" style="left:${xPct}%;top:${yPct}%;transform:translate(-50%,-50%) rotate(${rot}deg);font-size:${size}px">${suit}</span>`;
+    // Layout presets (percent positions). Using standard-ish pip patterns for 1-10
+    const mid=50, left=26, right=74, top=22, v2=35, v3=50, v4=65, bottom=78;
+    switch(rank){
+      case 1: return `<div class="pips">${pip(mid,mid)}</div>`;
+      case 2: return `<div class="pips">${pip(mid,top)}${pip(mid,bottom)}</div>`;
+      case 3: return `<div class="pips">${pip(mid,top)}${pip(mid,mid)}${pip(mid,bottom)}</div>`;
+      case 4: return `<div class="pips">${pip(left,top)}${pip(right,top)}${pip(left,bottom)}${pip(right,bottom)}</div>`;
+      case 5: return `<div class="pips">${pip(left,top)}${pip(right,top)}${pip(mid,mid)}${pip(left,bottom)}${pip(right,bottom)}</div>`;
+      case 6: return `<div class="pips">${pip(left,top)}${pip(right,top)}${pip(left,mid)}${pip(right,mid)}${pip(left,bottom)}${pip(right,bottom)}</div>`;
+      case 7: return `<div class="pips">${pip(left,top)}${pip(right,top)}${pip(left,mid)}${pip(right,mid)}${pip(left,bottom)}${pip(right,bottom)}${pip(mid,35)}</div>`;
+      case 8: return `<div class="pips">${pip(left,top)}${pip(right,top)}${pip(left,mid)}${pip(right,mid)}${pip(left,bottom)}${pip(right,bottom)}${pip(mid,35)}${pip(mid,65)}</div>`;
+      case 9: return `<div class="pips">${pip(left,top)}${pip(right,top)}${pip(left,mid)}${pip(right,mid)}${pip(left,bottom)}${pip(right,bottom)}${pip(mid,32)}${pip(mid,50)}${pip(mid,68)}</div>`;
+      case 10: return `<div class="pips">${pip(left,top)}${pip(right,top)}${pip(left,v2)}${pip(right,v2)}${pip(left,v4)}${pip(right,v4)}${pip(left,bottom)}${pip(right,bottom)}${pip(mid,40)}${pip(mid,60)}</div>`;
+      default: return `<div class="pips"></div>`;
+    }
   }
 
   // Audio (tiny oscillator-based beeps)
